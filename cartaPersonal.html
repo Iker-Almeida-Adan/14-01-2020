@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de Amor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f3e5ab; /* Fondo color pergamino */
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .sobre {
+            width: 300px;
+            height: 200px;
+            background: url('./img/laCarta.webp') no-repeat center center;
+            background-size: cover;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sobre img {
+            width: 70%;
+            height: 70%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .sello {
+            width: 50px;
+            height: 50px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Red_seal.svg/1024px-Red_seal.svg.png') no-repeat center center;
+            background-size: contain;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .carta {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: 20px;
+            text-align: left;
+            display: none; /* Ocultar la carta inicialmente */
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #d32f2f;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .firma {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            text-align: right;
+            margin-top: 40px;
+            color: #d32f2f;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .carta.abierta {
+            display: block;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @media (max-width: 600px) {
+            .carta {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .firma {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sobre" onclick="abrirCarta()">
+        <div class="sello"></div>
+    </div>
+    <div class="carta" id="carta">
+        <h1>Para Mi Amor</h1>
+        <p>
+            Querida Andrea,
+        </p>
+        <p>
+            Hoy celebramos cinco años maravillosos juntos, desde aquel 14 de enero de 2020. Cinco años que han sido una mezcla perfecta de amor, risas y momentos que siempre guardaré en mi corazón. Cada día a tu lado ha sido un regalo, y no puedo evitar sentirme profundamente agradecido por tenerte en mi vida.
+        </p>
+        <p>
+            Hemos compartido tantas aventuras y superado tantos desafíos que parece increíble todo lo que hemos vivido en este tiempo. Desde los días difíciles del COVID-19 y los confinamientos, donde aprendimos a valorar aún más nuestra compañía, hasta la emoción de cumplir años importantes: tus 18 y los míos, que marcaron un antes y un después en nuestras vidas.
+        </p>
+        <p>
+            Recuerdo cómo juntos conseguimos nuestros carnets de coche, y esa ilusión compartida que trajo tu primer coche. Fue emocionante, no solo por lo que significaba para ti, sino porque veía en tus ojos el reflejo de todo lo que juntos somos capaces de lograr.
+        </p>
+        <p>
+            Los viajes que hemos hecho también ocupan un lugar especial en mi corazón. Andorra, con sus paisajes de ensueño, los días de calma y sol en Platja d’Aro y l’Estartit, la energía vibrante de Madrid… Cada lugar tiene un rincón que cuenta una parte de nuestra historia, un recuerdo imborrable que solo tú y yo compartimos.
+        </p>
+        <p>
+            Estos cinco años me han enseñado que el amor no es solo un sentimiento, sino un hogar. Y tú, Andrea, eres el mío. Eres mi compañera, mi confidente, mi mejor amiga y, sobre todo, el amor de mi vida. Gracias por ser tú, por darme tu apoyo incondicional, por ser mi fuerza en los momentos difíciles y mi alegría en los días más oscuros.
+        </p>
+        <p>
+            No puedo esperar a ver qué nos depara el futuro, porque sé que mientras estemos juntos, todo será posible. Te amo más de lo que las palabras pueden expresar, y estoy emocionado por todos los momentos y aventuras que aún nos quedan por vivir.
+        </p>
+        <p>
+            Hoy celebro no solo estos cinco años contigo, sino también la promesa de un futuro lleno de sueños y amor.
+        </p>
+        <p class="firma">
+            Con todo mi corazón,<br>
+            Iker
+        </p>
+    </div>
+
+    <script>
+        function abrirCarta() {
+            document.querySelector('.sobre').style.display = 'none';
+            document.getElementById('carta').classList.add('abierta');
+        }
+    </script>
+</body>
+</html>

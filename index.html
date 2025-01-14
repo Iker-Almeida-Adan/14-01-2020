@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Aniversario!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap');
+
+        /* Estilos generales del cuerpo */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+            color: #fff;
+            text-align: center;
+            overflow-y: auto; /* Permitir scroll vertical */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px; /* Añadir margen arriba y abajo */
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px; /* Bordes redondeados */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin: 20px 0; /* Añadir margen arriba y abajo */
+        }
+
+        /* Estilo del título */
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilo del contador */
+        .contador {
+            font-size: 1.8rem; /* Tamaño de fuente aumentado */
+            margin: 10px 0;
+            animation: fadeIn 3s ease-in-out;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .contador strong {
+            font-size: 2rem; /* Tamaño de fuente aumentado */
+            color: #ffeb3b;
+        }
+
+        /* Estilo del botón */
+        .boton {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background: #ff3d73;
+            border: none;
+            border-radius: 20px;
+            text-decoration: none;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .boton:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 61, 115, 0.8); }
+            50% { box-shadow: 0 0 30px rgba(255, 61, 115, 1); }
+        }
+
+        /* Estilo de los corazones flotantes */
+        .heart {
+            position: absolute;
+            bottom: 0;
+            width: 30px;
+            height: 30px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/1024px-Love_Heart_SVG.svg.png') no-repeat center center;
+            background-size: contain;
+            animation: float 5s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Contenedor del video */
+        .video-container {
+            position: relative;
+            padding-bottom: 100%; /* Aspect ratio 1:1 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 20px 0;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the video covers the container */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Han pasado 5 años maravillosos juntos!</h1>
+        <div class="contador" id="contador"></div>
+        <div class="video-container">
+            <video src="./img/VIDEO-PORTADA.mov" autoplay muted loop></video>
+        </div>
+        <a href="./lineaTemporal.html" class="boton">¿Empezamos?</a>
+    </div>
+
+    <script>
+        // Función para actualizar el contador
+        function actualizarContador() {
+            const inicio = new Date("2020-01-14");
+            const ahora = new Date();
+            const diferencia = ahora - inicio;
+
+            const años = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 365));
+            const meses = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 30));
+            const semanas = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 7));
+            const días = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor(diferencia / (1000 * 60 * 60));
+            const minutos = Math.floor(diferencia / (1000 * 60));
+            const segundos = Math.floor(diferencia / 1000);
+
+            document.getElementById("contador").innerHTML = `
+                <strong>${años.toLocaleString()}</strong> años,
+                <strong>${meses.toLocaleString()}</strong> meses,
+                <strong>${semanas.toLocaleString()}</strong> semanas,
+                <strong>${días.toLocaleString()}</strong> días,<br>
+                <strong>${horas.toLocaleString()}</strong> horas,
+                <strong>${minutos.toLocaleString()}</strong> minutos,
+                <strong>${segundos.toLocaleString()}</strong> segundos.
+            `;
+        }
+
+        // Función para crear corazones flotantes
+        function crearCorazon() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // Actualizar el contador cada segundo
+        setInterval(actualizarContador, 1000);
+        // Crear corazones flotantes cada 300ms
+        setInterval(crearCorazon, 300);
+    </script>
+</body>
+</html>
