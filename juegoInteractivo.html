@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ca"></html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sopa de Letras - ¡Feliz Aniversario!</title>
+    <title>Sopa de Lletres - Feliç Aniversari!</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap');
 
@@ -25,12 +25,12 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .descripcion {
+        .descripcio {
             font-size: 1.2rem;
             margin-bottom: 20px;
         }
 
-        .sopa-de-letras {
+        .sopa-de-lletres {
             display: grid;
             grid-template-columns: repeat(15, 1fr);
             grid-gap: 5px;
@@ -39,9 +39,9 @@
             max-width: 600px;
         }
 
-        .sopa-de-letras div {
+        .sopa-de-lletres div {
             width: 100%;
-            padding-top: 100%; /* Esto asegura un diseño cuadrado */
+            padding-top: 100%; /* Això assegura un disseny quadrat */
             position: relative;
             background: rgba(255, 255, 255, 0.8);
             color: #000;
@@ -50,35 +50,35 @@
             transition: background 0.3s;
         }
 
-        .sopa-de-letras div span {
+        .sopa-de-lletres div span {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
 
-        .sopa-de-letras div.selected {
+        .sopa-de-lletres div.selected {
             background: #ff3d73;
             color: #fff;
         }
 
-        .sopa-de-letras div.correct {
+        .sopa-de-lletres div.correct {
             background: #4caf50;
             color: #fff;
         }
 
-        .mensaje {
+        .missatge {
             font-size: 1.5rem;
             margin-top: 20px;
             display: none;
         }
 
-        .palabras-encontradas {
+        .paraules-trobades {
             margin-top: 20px;
             font-size: 1.2rem;
         }
 
-        .palabra {
+        .paraula {
             display: inline-block;
             margin: 5px;
             padding: 5px 10px;
@@ -93,17 +93,17 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        .globo {
+        .globus {
             position: absolute;
             bottom: -70px;
             width: 50px;
             height: 70px;
             background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Red_balloon.svg/1024px-Red_balloon.svg.png') no-repeat center center;
             background-size: contain;
-            animation: subir 5s infinite;
+            animation: pujar 5s infinite;
         }
 
-        @keyframes subir {
+        @keyframes pujar {
             0% {
                 transform: translateY(0);
                 opacity: 1;
@@ -118,146 +118,146 @@
             font-size: 2rem;
             margin-top: 20px;
             display: none;
-            animation: agrandar 2s ease-in-out forwards;
+            animation: engrandir 2s ease-in-out forwards;
         }
 
-        @keyframes agrandar {
+        @keyframes engrandir {
             from { font-size: 2rem; }
             to { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
-    <h1>Sopa de Letras - ¡Feliz Aniversario!</h1>
-    <div class="descripcion">
-        Encuentra las palabras ocultas en la sopa de letras para formar la frase:<br>
-        <strong>"¡Feliz aniversario! ¡Por más años junto a ti!"</strong>
+    <h1>Sopa de Lletres - Feliç Aniversari!</h1>
+    <div class="descripcio"></div>
+        Troba les paraules ocultes a la sopa de lletres per formar la frase:<br>
+        <strong>"Feliç aniversari! Per molts anys al teu costat!"</strong>
     </div>
-    <div class="sopa-de-letras" id="sopaDeLetras">
-        <!-- Las letras de la sopa de letras se generarán aquí -->
+    <div class="sopa-de-lletres" id="sopaDeLletres">
+        <!-- Les lletres de la sopa de lletres es generaran aquí -->
     </div>
-    <div class="mensaje" id="mensaje">¡Felicidades! Has encontrado la frase.</div>
-    <div class="palabras-encontradas" id="palabrasEncontradas">
-        <!-- Las palabras encontradas se mostrarán aquí -->
+    <div class="missatge" id="missatge">Felicitats! Has trobat la frase.</div>
+    <div class="paraules-trobades" id="paraulesTrobades">
+        <!-- Les paraules trobades es mostraran aquí -->
     </div>
-    <div class="frase-final" id="fraseFinal">¡Feliz aniversario! ¡Por más años junto a ti!</div>
+    <div class="frase-final" id="fraseFinal">Feliç aniversari! Per molts anys al teu costat!</div>
 
     <script>
-        const palabras = [
-            'FELIZ', 'ANIVERSARIO', 'POR', 'MAS', 'AÑOS', 'JUNTO', 'A', 'TI'
+        const paraules = [
+            'FELIÇ', 'ANIVERSARI', 'PER', 'MOLTS', 'ANYS', 'AL', 'TEU', 'COSTAT'
         ];
 
-        const sopaDeLetras = document.getElementById('sopaDeLetras');
-        const mensaje = document.getElementById('mensaje');
-        const palabrasEncontradas = document.getElementById('palabrasEncontradas');
+        const sopaDeLletres = document.getElementById('sopaDeLletres');
+        const missatge = document.getElementById('missatge');
+        const paraulesTrobades = document.getElementById('paraulesTrobades');
         const fraseFinal = document.getElementById('fraseFinal');
-        const letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        const lletres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
         const grid = Array(15).fill(null).map(() => Array(15).fill(''));
-        const palabrasAcertadas = new Set();
-        let palabraActual = 0;
+        const paraulesEncertades = new Set();
+        let paraulaActual = 0;
 
-        // Colocar las palabras en la sopa de letras
-        palabras.forEach(palabra => {
-            let colocado = false;
-            while (!colocado) {
-                const direccion = Math.random() < 0.5 ? 'H' : 'V';
+        // Col·locar les paraules a la sopa de lletres
+        paraules.forEach(paraula => {
+            let col·locat = false;
+            while (!col·locat) {
+                const direccio = Math.random() < 0.5 ? 'H' : 'V';
                 const fila = Math.floor(Math.random() * 15);
                 const columna = Math.floor(Math.random() * 15);
-                if (direccion === 'H' && columna + palabra.length <= 15) {
-                    if (grid[fila].slice(columna, columna + palabra.length).every(c => c === '')) {
-                        for (let i = 0; i < palabra.length; i++) {
-                            grid[fila][columna + i] = palabra[i];
+                if (direccio === 'H' && columna + paraula.length <= 15) {
+                    if (grid[fila].slice(columna, columna + paraula.length).every(c => c === '')) {
+                        for (let i = 0; i < paraula.length; i++) {
+                            grid[fila][columna + i] = paraula[i];
                         }
-                        colocado = true;
+                        col·locat = true;
                     }
-                } else if (direccion === 'V' && fila + palabra.length <= 15) {
-                    if (grid.slice(fila, fila + palabra.length).every(row => row[columna] === '')) {
-                        for (let i = 0; i < palabra.length; i++) {
-                            grid[fila + i][columna] = palabra[i];
+                } else if (direccio === 'V' && fila + paraula.length <= 15) {
+                    if (grid.slice(fila, fila + paraula.length).every(row => row[columna] === '')) {
+                        for (let i = 0; i < paraula.length; i++) {
+                            grid[fila + i][columna] = paraula[i];
                         }
-                        colocado = true;
+                        col·locat = true;
                     }
                 }
             }
         });
 
-        // Rellenar el resto de la sopa de letras con letras aleatorias
+        // Omplir la resta de la sopa de lletres amb lletres aleatòries
         for (let fila = 0; fila < 15; fila++) {
             for (let columna = 0; columna < 15; columna++) {
                 if (grid[fila][columna] === '') {
-                    grid[fila][columna] = letras[Math.floor(Math.random() * letras.length)];
+                    grid[fila][columna] = lletres[Math.floor(Math.random() * lletres.length)];
                 }
             }
         }
 
-        // Crear la sopa de letras en el DOM
+        // Crear la sopa de lletres al DOM
         grid.forEach(fila => {
-            fila.forEach(letra => {
+            fila.forEach(lletra => {
                 const div = document.createElement('div');
                 const span = document.createElement('span');
-                span.textContent = letra;
+                span.textContent = lletra;
                 div.appendChild(span);
                 div.addEventListener('click', () => {
                     div.classList.toggle('selected');
                     verificarFrase();
                 });
-                sopaDeLetras.appendChild(div);
+                sopaDeLletres.appendChild(div);
             });
         });
 
-        // Verificar si se ha encontrado la frase
+        // Verificar si s'ha trobat la frase
         function verificarFrase() {
-            const seleccionadas = Array.from(document.querySelectorAll('.sopa-de-letras div.selected')).map(div => div.textContent).join('');
-            const palabra = palabras[palabraActual];
-            if (seleccionadas.includes(palabra) && !palabrasAcertadas.has(palabra)) {
-                mostrarPalabra(palabra);
-                palabrasAcertadas.add(palabra);
-                palabraActual++;
-                document.querySelectorAll('.sopa-de-letras div.selected').forEach(div => {
+            const seleccionades = Array.from(document.querySelectorAll('.sopa-de-lletres div.selected')).map(div => div.textContent).join('');
+            const paraula = paraules[paraulaActual];
+            if (seleccionades.includes(paraula) && !paraulesEncertades.has(paraula)) {
+                mostrarParaula(paraula);
+                paraulesEncertades.add(paraula);
+                paraulaActual++;
+                document.querySelectorAll('.sopa-de-lletres div.selected').forEach(div => {
                     div.classList.remove('selected');
                     div.classList.add('correct');
                 });
             }
-            if (palabrasAcertadas.size === palabras.length) {
+            if (paraulesEncertades.size === paraules.length) {
                 mostrarFraseFinal();
             }
         }
 
-        // Mostrar la palabra encontrada y ordenarla para formar la frase
-        function mostrarPalabra(palabra) {
-            palabrasAcertadas.add(palabra);
+        // Mostrar la paraula trobada i ordenar-la per formar la frase
+        function mostrarParaula(paraula) {
+            paraulesEncertades.add(paraula);
 
-            // Ordenar las palabras encontradas según la frase original
-            const palabrasOrdenadas = Array.from(palabrasAcertadas).sort((a, b) => palabras.indexOf(a) - palabras.indexOf(b));
+            // Ordenar les paraules trobades segons la frase original
+            const paraulesOrdenades = Array.from(paraulesEncertades).sort((a, b) => paraules.indexOf(a) - paraules.indexOf(b));
 
-            palabrasEncontradas.innerHTML = '';
-            palabrasOrdenadas.forEach(palabra => {
+            paraulesTrobades.innerHTML = '';
+            paraulesOrdenades.forEach(paraula => {
                 const div = document.createElement('div');
-                div.classList.add('palabra');
-                div.textContent = palabra;
-                palabrasEncontradas.appendChild(div);
+                div.classList.add('paraula');
+                div.textContent = paraula;
+                paraulesTrobades.appendChild(div);
             });
         }
 
-        // Mostrar la frase final con globos
+        // Mostrar la frase final amb globus
         function mostrarFraseFinal() {
-            mensaje.style.display = 'block';
+            missatge.style.display = 'block';
             fraseFinal.style.display = 'block';
             for (let i = 0; i < 20; i++) {
-                crearGlobo();
+                crearGlobus();
             }
         }
 
-        // Crear globos flotantes
-        function crearGlobo() {
-            const globo = document.createElement('div');
-            globo.classList.add('globo');
-            globo.style.left = Math.random() * 100 + 'vw';
-            globo.style.animationDuration = Math.random() * 2 + 3 + 's';
-            document.body.appendChild(globo);
+        // Crear globus flotants
+        function crearGlobus() {
+            const globus = document.createElement('div');
+            globus.classList.add('globus');
+            globus.style.left = Math.random() * 100 + 'vw';
+            globus.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(globus);
 
             setTimeout(() => {
-                globo.remove();
+                globus.remove();
             }, 5000);
         }
     </script>

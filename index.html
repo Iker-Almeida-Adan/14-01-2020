@@ -1,38 +1,38 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ca"></html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Feliz Aniversario!</title>
+    <title>Feliç Aniversari!</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap');
 
-        /* Estilos generales del cuerpo */
+        /* Estils generals del cos */
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
             background: linear-gradient(to bottom, #ff758c, #ff7eb3);
             color: #fff;
             text-align: center;
-            overflow-y: auto; /* Permitir scroll vertical */
+            overflow-y: auto; /* Permetre scroll vertical */
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px; /* Añadir margen arriba y abajo */
+            padding: 20px; /* Afegir marge a dalt i a baix */
         }
 
-        /* Contenedor principal */
+        /* Contenidor principal */
         .container {
             max-width: 600px;
             padding: 20px;
             background: rgba(0, 0, 0, 0.5);
-            border-radius: 20px; /* Bordes redondeados */
+            border-radius: 20px; /* Costats arrodonits */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            margin: 20px 0; /* Añadir margen arriba y abajo */
+            margin: 20px 0; /* Afegir marge a dalt i a baix */
         }
 
-        /* Estilo del título */
+        /* Estil del títol */
         h1 {
             font-family: 'Great Vibes', cursive;
             font-size: 2.5rem;
@@ -41,9 +41,9 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        /* Estilo del contador */
+        /* Estil del comptador */
         .contador {
-            font-size: 1.8rem; /* Tamaño de fuente aumentado */
+            font-size: 1.8rem; /* Mida de font augmentada */
             margin: 10px 0;
             animation: fadeIn 3s ease-in-out;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
@@ -51,11 +51,11 @@
         }
 
         .contador strong {
-            font-size: 2rem; /* Tamaño de fuente aumentado */
+            font-size: 2rem; /* Mida de font augmentada */
             color: #ffeb3b;
         }
 
-        /* Estilo del botón */
+        /* Estil del botó */
         .boton {
             display: inline-block;
             margin-top: 20px;
@@ -76,7 +76,7 @@
             transform: scale(1.1);
         }
 
-        /* Animaciones */
+        /* Animacions */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -87,7 +87,7 @@
             50% { box-shadow: 0 0 30px rgba(255, 61, 115, 1); }
         }
 
-        /* Estilo de los corazones flotantes */
+        /* Estil dels cors flotants */
         .heart {
             position: absolute;
             bottom: 0;
@@ -109,8 +109,8 @@
             }
         }
 
-        /* Contenedor del video */
-        .video-container {
+        /* Contenidor de la imatge */
+        .image-container {
             position: relative;
             padding-bottom: 100%; /* Aspect ratio 1:1 */
             height: 0;
@@ -119,54 +119,54 @@
             margin: 20px 0;
         }
 
-        .video-container video {
+        .image-container img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensure the video covers the container */
+            object-fit: cover; /* Assegurar que la imatge cobreixi el contenidor */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>¡Han pasado 5 años maravillosos juntos!</h1>
+        <h1>Han passat 5 anys meravellosos junts!</h1>
         <div class="contador" id="contador"></div>
-        <div class="video-container">
-            <video src="./img/VIDEO-PORTADA.mov" autoplay muted loop></video>
+        <div class="image-container">
+            <img src="./img/PORTADA.jpeg" alt="Portada">
         </div>
-        <a href="./lineaTemporal.html" class="boton">¿Empezamos?</a>
+        <a href="./cartaPersonal.html" class="boton">Comencem?</a>
     </div>
 
     <script>
-        // Función para actualizar el contador
-        function actualizarContador() {
-            const inicio = new Date("2020-01-14");
-            const ahora = new Date();
-            const diferencia = ahora - inicio;
+        // Funció per actualitzar el comptador
+        function actualitzarComptador() {
+            const inici = new Date("2020-01-14");
+            const ara = new Date();
+            const diferència = ara - inici;
 
-            const años = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 365));
-            const meses = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 30));
-            const semanas = Math.floor(diferencia / (1000 * 60 * 60 * 24 * 7));
-            const días = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-            const horas = Math.floor(diferencia / (1000 * 60 * 60));
-            const minutos = Math.floor(diferencia / (1000 * 60));
-            const segundos = Math.floor(diferencia / 1000);
+            const anys = Math.floor(diferència / (1000 * 60 * 60 * 24 * 365));
+            const mesos = Math.floor(diferència / (1000 * 60 * 60 * 24 * 30));
+            const setmanes = Math.floor(diferència / (1000 * 60 * 60 * 24 * 7));
+            const dies = Math.floor(diferència / (1000 * 60 * 60 * 24));
+            const hores = Math.floor(diferència / (1000 * 60 * 60));
+            const minuts = Math.floor(diferència / (1000 * 60));
+            const segons = Math.floor(diferència / 1000);
 
             document.getElementById("contador").innerHTML = `
-                <strong>${años.toLocaleString()}</strong> años,
-                <strong>${meses.toLocaleString()}</strong> meses,
-                <strong>${semanas.toLocaleString()}</strong> semanas,
-                <strong>${días.toLocaleString()}</strong> días,<br>
-                <strong>${horas.toLocaleString()}</strong> horas,
-                <strong>${minutos.toLocaleString()}</strong> minutos,
-                <strong>${segundos.toLocaleString()}</strong> segundos.
+                <strong>${anys.toLocaleString()}</strong> anys,
+                <strong>${mesos.toLocaleString()}</strong> mesos,
+                <strong>${setmanes.toLocaleString()}</strong> setmanes,
+                <strong>${dies.toLocaleString()}</strong> dies,<br>
+                <strong>${hores.toLocaleString()}</strong> hores,
+                <strong>${minuts.toLocaleString()}</strong> minuts,
+                <strong>${segons.toLocaleString()}</strong> segons.
             `;
         }
 
-        // Función para crear corazones flotantes
-        function crearCorazon() {
+        // Funció per crear cors flotants
+        function crearCor() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
             heart.style.left = Math.random() * 100 + 'vw';
@@ -178,10 +178,10 @@
             }, 5000);
         }
 
-        // Actualizar el contador cada segundo
-        setInterval(actualizarContador, 1000);
-        // Crear corazones flotantes cada 300ms
-        setInterval(crearCorazon, 300);
+        // Actualitzar el comptador cada segon
+        setInterval(actualitzarComptador, 1000);
+        // Crear cors flotants cada 300ms
+        setInterval(crearCor, 300);
     </script>
 </body>
 </html>
